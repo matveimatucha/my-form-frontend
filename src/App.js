@@ -8,7 +8,7 @@ function App() {
     surname: '', // Фамилия
     name: '', // Имя
     patronymic: '', // Отчество
-    vkLink: '', // Ссылка на вк
+    vkLink: '', // Ссылка на ВК
     phone: '', // Номер телефона
     faculty: '' // Факультет
   });
@@ -103,11 +103,9 @@ function App() {
                       className="form-control"
                       id="phone"
                       name="phone"
-                      placeholder="+7 (XXX) XXX-XX-XX"
+                      placeholder="Введите номер телефона (любая формат)"
                       value={formData.phone}
                       onChange={handleChange}
-                      pattern="\+7 [0-9]{3} [0-9]{3}-[0-9]{2}-[0-9]{2}"
-                      title="Формат: +7 (XXX) XXX-XX-XX"
                       required
                     />
                   </div>
@@ -157,7 +155,6 @@ function App() {
                       <option value="ФНМ">ФНМ</option>
                       <option value="ФПО">ФПО</option>
                       <option value="ФФМ">ФФМ</option>
-                      <option value="ФФФХИ">ФФФХИ</option>
                       <option value="Химический">Химический</option>
                       <option value="Экономический">Экономический</option>
                       <option value="Юридический">Юридический</option>
