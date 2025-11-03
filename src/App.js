@@ -13,7 +13,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/submit', formData); // URL твоего бэка
+      const response = await axios.post('https://my-form-backend-rq4j.onrender.com/submit', formData); // URL твоего бэка
       setStatus(response.data.message);
       setFormData({ name: '', email: '', message: '' }); // Очистка формы
     } catch (error) {
