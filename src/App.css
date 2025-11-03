@@ -1,39 +1,54 @@
 .App {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+  background-image: url('https://source.unsplash.com/random/1920x1080/?abstract'); /* Твоя картинка */
+  background-size: cover; /* Покрывает весь экран */
+  background-position: center; /* Центрирует */
+  background-repeat: no-repeat; /* Не повторяется */
+  min-height: 100vh; /* На всю высоту */
+  position: relative; /* Для overlay */
 }
 
-input, textarea {
+.App::before { /* Затемнение фона для читаемости */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4); /* Полупрозрачный чёрный */
+  z-index: 1;
 }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background: #007bff;
-  color: white;
+.card { /* Карточка формы поверх фона */
+  position: relative;
+  z-index: 2;
+  background-color: rgba(255, 255, 255, 0.95); /* Полупрозрачный белый */
   border: none;
-  border-radius: 4px;
-  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Тень для объёма */
 }
 
-button:hover {
-  background: #0056b3;
+.card-header {
+  background: linear-gradient(135deg, #007bff, #0056b3); /* Градиент для заголовка */
+  border-radius: 10px 10px 0 0; /* Скругление сверху */
 }
 
-.success {
-  color: green;
-  text-align: center;
+.btn-primary {
+  background: linear-gradient(135deg, #007bff, #0056b3); /* Градиент кнопки */
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-weight: bold;
 }
 
-.error {
-  color: red;
-  text-align: center;
+.btn-primary:hover {
+  transform: translateY(-2px); /* Анимация поднятия */
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+@media (max-width: 768px) { /* Мобильный дизайн */
+  .container {
+    padding: 10px;
+  }
+  .card {
+    margin: 10px;
+  }
 }
