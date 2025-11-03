@@ -5,13 +5,13 @@ import './App.css';
 
 function App() {
   const [formData, setFormData] = useState({
-    surname: '',
-    name: '',
-    patronymic: '',
-    vkLink: '',
-    phone: '',
-    email: '',
-    faculty: ''
+    surname: '', // Фамилия
+    name: '', // Имя
+    patronymic: '', // Отчество
+    vkLink: '', // Ссылка на ВК
+    phone: '', // Номер телефона
+    email: '', // Email
+    faculty: '' // Факультет
   });
   const [status, setStatus] = useState('');
 
@@ -22,13 +22,11 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:3001';
-      const response = await axios.post(`${apiUrl}/submit`, formData);
+      const response = await axios.post('https://my-form-backend-rq4j.onrender.com/submit', formData);
       setStatus(response.data.message || 'Данные отправлены!');
       setFormData({ surname: '', name: '', patronymic: '', vkLink: '', phone: '', email: '', faculty: '' });
     } catch (error) {
-      const errorMsg = error.response?.data?.error || error.message || 'Ошибка отправки';
-      setStatus(errorMsg);
+      setStatus(error.response?.data?.error || 'Ошибка отправки');
     }
   };
 
@@ -46,31 +44,94 @@ function App() {
                 <form onSubmit={handleSubmit}>
                   <div className="mb-3">
                     <label htmlFor="surname" className="form-label">Фамилия</label>
-                    <input type="text" className="form-control" id="surname" name="surname" placeholder="Введите фамилию" value={formData.surname} onChange={handleChange} required />
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="surname"
+                      name="surname"
+                      placeholder="Введите фамилию"
+                      value={formData.surname}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="name" className="form-label">Имя</label>
-                    <input type="text" className="form-control" id="name" name="name" placeholder="Введите имя" value={formData.name} onChange={handleChange} required />
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="name"
+                      name="name"
+                      placeholder="Введите имя"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="patronymic" className="form-label">Отчество</label>
-                    <input type="text" className="form-control" id="patronymic" name="patronymic" placeholder="Введите отчество" value={formData.patronymic} onChange={handleChange} required />
+                    <input
+                      type="text"
+                      className="form-control"
+                      id="patronymic"
+                      name="patronymic"
+                      placeholder="Введите отчество"
+                      value={formData.patronymic}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="vkLink" className="form-label">Ссылка на ВК</label>
-                    <input type="url" className="form-control" id="vkLink" name="vkLink" placeholder="https://vk.com/yourprofile" value={formData.vkLink} onChange={handleChange} pattern="https?://vk\.com/.*" title="Введите ссылку на профиль ВК" required />
+                    <input
+                      type="url"
+                      className="form-control"
+                      id="vkLink"
+                      name="vkLink"
+                      placeholder="https://vk.com/yourprofile"
+                      value={formData.vkLink}
+                      onChange={handleChange}
+                      pattern="https?://vk\.com/.*"
+                      title="Введите ссылку на профиль ВК (vk.com/...)"
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="phone" className="form-label">Номер телефона</label>
-                    <input type="tel" className="form-control" id="phone" name="phone" placeholder="Введите номер телефона (любой формат)" value={formData.phone} onChange={handleChange} required />
+                    <input
+                      type="tel"
+                      className="form-control"
+                      id="phone"
+                      name="phone"
+                      placeholder="Введите номер телефона (любой формат)"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
-                    <input type="email" className="form-control" id="email" name="email" placeholder="example@mail.ru" value={formData.email} onChange={handleChange} required />
+                    <input
+                      type="email"
+                      className="form-control"
+                      id="email"
+                      name="email"
+                      placeholder="example@mail.ru"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
                   <div className="mb-3">
                     <label htmlFor="faculty" className="form-label">Факультет</label>
-                    <select className="form-select" id="faculty" name="faculty" value={formData.faculty} onChange={handleChange} required>
+                    <select
+                      className="form-select"
+                      id="faculty"
+                      name="faculty"
+                      value={formData.faculty}
+                      onChange={handleChange}
+                      required
+                    >
                       <option value="">Выберите факультет</option>
                       <option value="Биологический">Биологический</option>
                       <option value="Биотехнологический">Биотехнологический</option>
